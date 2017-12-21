@@ -10,3 +10,17 @@ body,
 body {
   overflow-x : hidden
 }
+
+.rc-slider-handle {
+  background-color: $primary;
+  border: solid 2px $primary;
+  border-radius: 25%;
+}
+
+.rc-slider-dot {
+  background-color: $gray-400;
+  width: 4px;
+  height: 8px;
+  border: none;
+  border-radius: 0;
+}

@@ -11,7 +11,7 @@ module.exports = merge(common, {
     path: common.output.path,
     filename: '[name].[hash].js',
   },
-  devTool: 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   plugins: [
     new CleanWebpackPlugin(['dist'], { root: process.cwd() }),
     new webpack.optimize.ModuleConcatenationPlugin(),

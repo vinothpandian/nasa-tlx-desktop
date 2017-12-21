@@ -41,7 +41,7 @@ class MainForm extends Component {
   onInputChange(event) {
     event.preventDefault();
 
-    const { name } = event.target.name;
+    const { name } = event.target;
 
     this.setState({
       [name]: event.target.value,

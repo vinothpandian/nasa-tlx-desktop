@@ -23,9 +23,10 @@ module.exports = {
       'react-redux',
       'redux',
       'redux-actions',
-      'redux-promise',
       'reactstrap',
       'shortid',
+      'lodash',
+      'rc-slider',
     ],
   },
   output: {

@@ -42,6 +42,7 @@ class DetailsForm extends Component {
       });
     } else {
       this.props.storeDetails(this.state);
+      this.props.history.push('/part1');
     }
   }
 
@@ -57,7 +58,6 @@ class DetailsForm extends Component {
                   id="ageGroup"
                   title="Choose your age group"
                   onSelect={this.onSelect}
-                  selected={this.state.ageGroup}
                   values={['20-22', '23-25', '26-28', '29-31', 'Other']}
                 />
                 <hr />
@@ -65,7 +65,6 @@ class DetailsForm extends Component {
                   id="genderGroup"
                   title="Choose your gender"
                   onSelect={this.onSelect}
-                  selected={this.state.genderGroup}
                   values={['Male', 'Female', 'Other']}
                 />
                 <hr />
@@ -73,7 +72,6 @@ class DetailsForm extends Component {
                   id="experienceGroup"
                   title="Choose your experience in the task"
                   onSelect={this.onSelect}
-                  selected={this.state.experienceGroup}
                   values={['0-1 year', '2-4 years', '5-7 years', 'Other']}
                 />
                 {this.state.alertMessage}
@@ -90,10 +88,15 @@ class DetailsForm extends Component {
 }
 
 DetailsForm.propTypes = {
-  expID: PropTypes.string.isRequired,
-  partID: PropTypes.string.isRequired,
+  expID: PropTypes.string,
+  partID: PropTypes.string,
   storeDetails: PropTypes.func.isRequired,
-  history: PropTypes.shape.isRequired,
+  history: PropTypes.shape().isRequired,
+};
+
+DetailsForm.defaultProps = {
+  expID: 'default',
+  partID: 'defaultUser',
 };
 
 const mapStateToProps = state => ({

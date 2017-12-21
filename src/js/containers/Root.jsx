@@ -1,5 +1,6 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+// import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './Nav/Nav';
 import Home from './Home';
 import PageNotFound from './PageNotFound';
@@ -14,7 +15,7 @@ function Root() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/details" component={DetailsForm} />
-          <Route exact path="/SubScale" component={SubScale} />
+          <Route exact path="/part1" component={SubScale} />
           <Route component={PageNotFound} />
         </Switch>
       </Router>

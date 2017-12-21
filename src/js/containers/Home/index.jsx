@@ -32,7 +32,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  history: PropTypes.shape.isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 export default Home;
