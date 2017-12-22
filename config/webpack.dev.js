@@ -17,6 +17,7 @@ module.exports = merge(common, {
   },
   devtool: 'eval-source-map',
   plugins: [
+    new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),

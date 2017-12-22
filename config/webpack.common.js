@@ -14,6 +14,7 @@ const paths = {
 module.exports = {
   context: paths.SRC,
   entry: {
+    rhl: 'react-hot-loader/patch',
     app: path.join(paths.JS, 'app'),
     dashboard: path.join(paths.JS, 'dashboard'),
     vendor: [
@@ -32,7 +33,7 @@ module.exports = {
   output: {
     path: paths.DIST,
     filename: '[name].bundle.js',
-    publicPath: '',
+    publicPath: '/',
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
@@ -43,7 +44,7 @@ module.exports = {
       filename: path.join(paths.DIST, 'index.html'),
       template: path.join(paths.SRC, 'index.html'),
       title: 'Nasa TLX',
-      chunks: ['app', 'vendor'],
+      chunks: ['rhl', 'app', 'vendor'],
       minify: {
         collapseWhitespace: true,
         collapseInlineTagWhitespace: true,

@@ -67,6 +67,7 @@ class SubScale extends Component {
       } = this.state;
 
       this.props.storeScaleValues(mental, physical, temporal, performance, effort, frustration);
+      this.props.history.push('/part2');
     }
   }
 

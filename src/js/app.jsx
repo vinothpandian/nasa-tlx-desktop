@@ -1,21 +1,22 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import '../css/style.scss';
-import Root from './containers/Root';
-import reducers from './reducers';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import ProviderContainer from './ProviderContainer';
 
-/* eslint-disable no-underscore-dangle */
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const render = (Component) => {
+  ReactDOM.render(
+    <AppContainer key={Math.random()}>
+      <Component />
+    </AppContainer>,
+    document.getElementById('react-container'),
+  );
+};
+
+render(ProviderContainer);
+
+/* eslint-disable global-require  */
+// Webpack Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('./ProviderContainer', () => render(require('./ProviderContainer').default));
+}
 /* eslint-enable */
-
-render(
-  <Provider store={store}>
-    <Root />
-  </Provider>,
-  document.getElementById('react-container'),
-);
