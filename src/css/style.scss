@@ -4,11 +4,7 @@ html,
 body,
 #react-container,
 #root {
-  height: calc(100% - 59px);
-}
-
-body {
-  overflow-x : hidden
+  height: 100%;
 }
 
 .rc-slider-handle {

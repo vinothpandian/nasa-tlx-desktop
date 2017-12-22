@@ -42,7 +42,7 @@ class Nav extends Component {
             color="info"
           >
                         Definitions
-            <img className="ml-2" src={question} alt="?" height="16" />
+            <img className="ml-2" src={question} alt="(?)" height="16" />
           </Button>
           <Button
             onClick={() => {
@@ -51,7 +51,7 @@ class Nav extends Component {
             color="success"
           >
                         Instructions
-            <img className="ml-2" src={info} alt="?" height="16" />
+            <img className="ml-2" src={info} alt="(i)" height="16" />
           </Button>
         </Form>
         <DefinitionsModal

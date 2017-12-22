@@ -11,12 +11,14 @@ class SubScale extends Component {
     super(props);
 
     this.state = {
-      mental: 50,
-      physical: 50,
-      temporal: 50,
-      performance: 50,
-      effort: 50,
-      frustration: 50,
+      scale: {
+        mental: 50,
+        physical: 50,
+        temporal: 50,
+        performance: 50,
+        effort: 50,
+        frustration: 50,
+      },
       answered: false,
       alertMessage: '',
     };
@@ -33,6 +35,8 @@ class SubScale extends Component {
   }
 
   handleChange(id, value) {
+    let newValue = value;
+
     if (!this.state.answered) {
       this.setState({
         answered: true,
@@ -40,14 +44,12 @@ class SubScale extends Component {
     }
 
     if (id === 'performance') {
-      this.setState({
-        [id]: 100 - value,
-      });
-    } else {
-      this.setState({
-        [id]: value,
-      });
+      newValue = 100 - newValue;
     }
+
+    this.setState(prevState => ({
+      scale: Object.assign({}, prevState.scale, { [id]: newValue }),
+    }));
   }
 
   handleSubmit(event) {
@@ -62,11 +64,7 @@ class SubScale extends Component {
         ),
       });
     } else {
-      const {
-        mental, physical, temporal, performance, effort, frustration,
-      } = this.state;
-
-      this.props.storeScaleValues(mental, physical, temporal, performance, effort, frustration);
+      this.props.storeScaleValues(this.state.scale);
       this.props.history.push('/part2');
     }
   }
