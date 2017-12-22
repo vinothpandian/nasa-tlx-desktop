@@ -88,15 +88,10 @@ class DetailsForm extends Component {
 }
 
 DetailsForm.propTypes = {
-  expID: PropTypes.string,
-  partID: PropTypes.string,
+  expID: PropTypes.string.isRequired,
+  partID: PropTypes.string.isRequired,
   storeDetails: PropTypes.func.isRequired,
   history: PropTypes.shape().isRequired,
-};
-
-DetailsForm.defaultProps = {
-  expID: 'default',
-  partID: 'defaultUser',
 };
 
 const mapStateToProps = state => ({

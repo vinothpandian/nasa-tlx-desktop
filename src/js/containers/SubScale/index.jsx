@@ -145,14 +145,9 @@ class SubScale extends Component {
   }
 }
 
-SubScale.defaultProps = {
-  expID: 'default',
-  partID: 'defaultUser',
-};
-
 SubScale.propTypes = {
-  expID: PropTypes.string,
-  partID: PropTypes.string,
+  expID: PropTypes.string.isRequired,
+  partID: PropTypes.string.isRequired,
   history: PropTypes.shape().isRequired,
   storeScaleValues: PropTypes.func.isRequired,
 };
