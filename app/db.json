@@ -1,0 +1,433 @@
+{
+  "experiments": [
+    {
+      "id": 1514074631446,
+      "experimentID": "Test",
+      "participantID": "SY0-MOHFF",
+      "age": "26-28",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 80,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 50,
+      "weightedWorkload": {
+        "Effort": 200,
+        "Frustration Level": 250,
+        "Mental Demand": 0,
+        "Performance": 150,
+        "Physical Demand": 50,
+        "Temporal Demand": 100
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 0,
+        "Performance": 3,
+        "Physical Demand": 1,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514075335584,
+      "experimentID": "Test",
+      "participantID": "RJRTE_3ZG",
+      "age": "23-25",
+      "experience": "2-4 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 70,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 56.67,
+      "weightedWorkload": {
+        "Effort": 50,
+        "Frustration Level": 0,
+        "Mental Demand": 350,
+        "Performance": 100,
+        "Physical Demand": 200,
+        "Temporal Demand": 150
+      },
+      "workload": {
+        "Effort": 1,
+        "Frustration Level": 0,
+        "Mental Demand": 5,
+        "Performance": 2,
+        "Physical Demand": 4,
+        "Temporal Demand": 3
+      }
+    },
+    {
+      "id": 1514082912262,
+      "experimentID": "Test",
+      "participantID": "HYPDG5NZG",
+      "age": "REFDDF",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 80,
+        "Frustration Level": 30,
+        "Mental Demand": 100,
+        "Performance": 90,
+        "Physical Demand": 40,
+        "Temporal Demand": 80
+      },
+      "taskload": 62.67,
+      "weightedWorkload": {
+        "Effort": 320,
+        "Frustration Level": 150,
+        "Mental Demand": 0,
+        "Performance": 270,
+        "Physical Demand": 40,
+        "Temporal Demand": 160
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 0,
+        "Performance": 3,
+        "Physical Demand": 1,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514089169637,
+      "experimentID": "Test",
+      "participantID": "BKKA5S2ZZ",
+      "age": "23-25",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 80,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 58,
+      "weightedWorkload": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 320,
+        "Performance": 100,
+        "Physical Demand": 200,
+        "Temporal Demand": 150
+      },
+      "workload": {
+        "Effort": 1,
+        "Frustration Level": 1,
+        "Mental Demand": 4,
+        "Performance": 2,
+        "Physical Demand": 4,
+        "Temporal Demand": 3
+      }
+    },
+    {
+      "id": 1514089228606,
+      "experimentID": "Test",
+      "participantID": "B1VFJINGZ",
+      "age": "29-31",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 50,
+        "Performance": 50,
+        "Physical Demand": 60,
+        "Temporal Demand": 50
+      },
+      "taskload": 50.67,
+      "weightedWorkload": {
+        "Effort": 200,
+        "Frustration Level": 250,
+        "Mental Demand": 0,
+        "Performance": 150,
+        "Physical Demand": 60,
+        "Temporal Demand": 100
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 0,
+        "Performance": 3,
+        "Physical Demand": 1,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514089608149,
+      "experimentID": "Test",
+      "participantID": "B11QNI2MF",
+      "age": "26-28",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 70,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 50,
+      "weightedWorkload": {
+        "Effort": 200,
+        "Frustration Level": 250,
+        "Mental Demand": 0,
+        "Performance": 150,
+        "Physical Demand": 50,
+        "Temporal Demand": 100
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 0,
+        "Performance": 3,
+        "Physical Demand": 1,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514089732839,
+      "experimentID": "Test",
+      "participantID": "B12WAINGZ",
+      "age": "23-25",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 70,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 50,
+      "weightedWorkload": {
+        "Effort": 200,
+        "Frustration Level": 250,
+        "Mental Demand": 0,
+        "Performance": 150,
+        "Physical Demand": 50,
+        "Temporal Demand": 100
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 0,
+        "Performance": 3,
+        "Physical Demand": 1,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514089759707,
+      "experimentID": "Test",
+      "participantID": "H1VXAOHMF",
+      "age": "26-28",
+      "experience": "2-4 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 50,
+        "Performance": 50,
+        "Physical Demand": 70,
+        "Temporal Demand": 50
+      },
+      "taskload": 55.33,
+      "weightedWorkload": {
+        "Effort": 50,
+        "Frustration Level": 0,
+        "Mental Demand": 250,
+        "Performance": 100,
+        "Physical Demand": 280,
+        "Temporal Demand": 150
+      },
+      "workload": {
+        "Effort": 1,
+        "Frustration Level": 0,
+        "Mental Demand": 5,
+        "Performance": 2,
+        "Physical Demand": 4,
+        "Temporal Demand": 3
+      }
+    },
+    {
+      "id": 1514089911772,
+      "experimentID": "test",
+      "participantID": "SJY66J2MG",
+      "age": "26-28",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 70,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 50,
+      "weightedWorkload": {
+        "Effort": 200,
+        "Frustration Level": 250,
+        "Mental Demand": 0,
+        "Performance": 150,
+        "Physical Demand": 50,
+        "Temporal Demand": 100
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 0,
+        "Performance": 3,
+        "Physical Demand": 1,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514095026750,
+      "experimentID": "Paper",
+      "participantID": "RY5H-AHZG",
+      "age": "23-25",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 80,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 50,
+      "weightedWorkload": {
+        "Effort": 200,
+        "Frustration Level": 250,
+        "Mental Demand": 0,
+        "Performance": 100,
+        "Physical Demand": 50,
+        "Temporal Demand": 150
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 0,
+        "Performance": 2,
+        "Physical Demand": 1,
+        "Temporal Demand": 3
+      }
+    },
+    {
+      "id": 1514096727468,
+      "experimentID": "Test",
+      "participantID": "R1KPOA2MM",
+      "age": "26-28",
+      "experience": "5-7 years",
+      "gender": "Female",
+      "scale": {
+        "Effort": 80,
+        "Frustration Level": 40,
+        "Mental Demand": 60,
+        "Performance": 80,
+        "Physical Demand": 80,
+        "Temporal Demand": 30
+      },
+      "taskload": 65.33,
+      "weightedWorkload": {
+        "Effort": 240,
+        "Frustration Level": 40,
+        "Mental Demand": 240,
+        "Performance": 160,
+        "Physical Demand": 240,
+        "Temporal Demand": 60
+      },
+      "workload": {
+        "Effort": 3,
+        "Frustration Level": 1,
+        "Mental Demand": 4,
+        "Performance": 2,
+        "Physical Demand": 3,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514096920330,
+      "experimentID": "Test",
+      "participantID": "HJJQKT3GF",
+      "age": "26-28",
+      "experience": "5-7 years",
+      "gender": "Test",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Mental Demand": 80,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 56,
+      "weightedWorkload": {
+        "Effort": 150,
+        "Frustration Level": 150,
+        "Mental Demand": 240,
+        "Performance": 100,
+        "Physical Demand": 100,
+        "Temporal Demand": 100
+      },
+      "workload": {
+        "Effort": 3,
+        "Frustration Level": 3,
+        "Mental Demand": 3,
+        "Performance": 2,
+        "Physical Demand": 2,
+        "Temporal Demand": 2
+      }
+    },
+    {
+      "id": 1514097064413,
+      "experimentID": "New",
+      "participantID": "R12SY6NGM",
+      "age": "erer",
+      "experience": "erer",
+      "gender": "erer",
+      "scale": {
+        "Effort": 50,
+        "Frustration Level": 60,
+        "Mental Demand": 50,
+        "Performance": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50
+      },
+      "taskload": 53.33,
+      "weightedWorkload": {
+        "Effort": 200,
+        "Frustration Level": 300,
+        "Mental Demand": 50,
+        "Performance": 100,
+        "Physical Demand": 0,
+        "Temporal Demand": 150
+      },
+      "workload": {
+        "Effort": 4,
+        "Frustration Level": 5,
+        "Mental Demand": 1,
+        "Performance": 2,
+        "Physical Demand": 0,
+        "Temporal Demand": 3
+      }
+    }
+  ]
+}

@@ -15,8 +15,8 @@ import RawData from "./containers/Dashboard/RawData";
 export default () => (
   <App>
     <Switch>
-      <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/rawdata/:expID/:partID" component={RawData} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/rawdata/:expID/:partID" component={RawData} />
       <Route path="/end" component={End} />
       <Route path="/part2" component={Pairwise} />
       <Route path="/part1" component={SubScale} />

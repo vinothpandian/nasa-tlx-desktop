@@ -16,12 +16,15 @@ import MenuBuilder from './menu';
 const fs = require('fs');
 const path = require('path');
 
-const dbPath = path.join(__dirname, 'assets', 'db.json');
+const dbPath = 'db.json';
 const low = require('lowdb');
+
 const FileSync = require('lowdb/adapters/FileSync');
 
 const adapter = new FileSync(dbPath);
 const db = low(adapter);
+
+db.defaults({ experiments: [] }).write();
 
 let mainWindow = null;
 
@@ -72,8 +75,12 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     show: false,
     minWidth: 1024,
-    minHeight: 728
+    minHeight: 728,
+    width: 1024,
+    height: 728,
   });
+
+  mainWindow.setMenu(null);
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 

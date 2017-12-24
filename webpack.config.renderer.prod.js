@@ -11,6 +11,8 @@ import BabiliPlugin from 'babili-webpack-plugin';
 import baseConfig from './webpack.config.base';
 import CheckNodeEnv from './internals/scripts/CheckNodeEnv';
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 CheckNodeEnv('production');
 
 export default merge.smart(baseConfig, {
@@ -156,9 +158,16 @@ export default merge.smart(baseConfig, {
     /**
      * Babli is an ES6+ aware minifier based on the Babel toolchain (beta)
      */
-    new BabiliPlugin(),
+    // new BabiliPlugin(),
 
     new ExtractTextPlugin('style.css'),
+
+    new CopyWebpackPlugin([
+      {
+        from: './app/assets/db.json',
+        to: path.join(__dirname, 'app'),
+      }
+    ]),
 
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.OPEN_ANALYZER === 'true' ? 'server' : 'disabled',

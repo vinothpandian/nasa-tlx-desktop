@@ -5,6 +5,7 @@ import {
   Row
 } from 'reactstrap';
 import { ipcRenderer } from 'electron';
+import PropTypes from 'prop-types';
 import Navigation from '../Nav';
 import DashboardTable from './DashboardTable';
 
@@ -23,6 +24,10 @@ class Dashboard extends Component {
     if (this.experiments !== 'No data found') {
       experimentID = this.experiments[0];
       openTable = true;
+    } else {
+      alert('No user data found');
+      this.experiments = [];
+      this.props.history.push('/');
     }
 
     this.state = {
@@ -125,6 +130,8 @@ class Dashboard extends Component {
 
 }
 
-Dashboard.propTypes = {};
+Dashboard.propTypes = {
+  history: PropTypes.shape().isRequired,
+};
 
 export default Dashboard;
