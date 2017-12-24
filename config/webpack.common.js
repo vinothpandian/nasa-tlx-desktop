@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
@@ -13,23 +12,6 @@ const paths = {
 
 module.exports = {
   context: paths.SRC,
-  entry: {
-    rhl: 'react-hot-loader/patch',
-    app: path.join(paths.JS, 'app'),
-    dashboard: path.join(paths.JS, 'dashboard'),
-    vendor: [
-      'react',
-      'react-dom',
-      'react-router-dom',
-      'react-redux',
-      'redux',
-      'redux-actions',
-      'reactstrap',
-      'shortid',
-      'lodash',
-      'rc-slider',
-    ],
-  },
   output: {
     path: paths.DIST,
     filename: '[name].bundle.js',
@@ -39,30 +21,6 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor', // Specify the common bundle's name.
       minChunks: 2,
-    }),
-    new HtmlWebpackPlugin({
-      filename: path.join(paths.DIST, 'index.html'),
-      template: path.join(paths.SRC, 'index.html'),
-      title: 'Nasa TLX',
-      chunks: ['rhl', 'app', 'vendor'],
-      minify: {
-        collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true,
-      },
-    }),
-    new HtmlWebpackPlugin({
-      filename: path.join(paths.DIST, 'dashboard.html'),
-      template: path.join(paths.SRC, 'index.html'),
-      title: 'Nasa TLX - Dashboard',
-      chunks: ['dashboard', 'vendor'],
-      minify: {
-        collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true,
-      },
     }),
     new ExtractTextPlugin('style.bundle.css'),
   ],

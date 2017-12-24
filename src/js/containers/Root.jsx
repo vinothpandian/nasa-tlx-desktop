@@ -1,26 +1,25 @@
 import React from 'react';
-// import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter, BrowserRouter } from 'react-router-dom';
 import Nav from './Nav/Nav';
-import Home from './Home';
-import PageNotFound from './PageNotFound';
-import DetailsForm from './DetailsForm';
-import SubScale from './SubScale';
-import Pairwise from './Pairwise';
+import Routes from './Routes';
 
 function Root() {
+  const env = process.env.NODE_ENV;
+
   return (
     <div id="root">
       <Nav />
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/details" component={DetailsForm} />
-          <Route exact path="/part1" component={SubScale} />
-          <Route exact path="/part2" component={Pairwise} />
-          <Route component={PageNotFound} />
-        </Switch>
-      </Router>
+      {
+        env === 'development'
+          ?
+            <BrowserRouter>
+              <Routes />
+            </BrowserRouter>
+          :
+            <HashRouter>
+              <Routes />
+            </HashRouter>
+      }
     </div>
   );
 }

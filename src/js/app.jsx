@@ -3,20 +3,27 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import ProviderContainer from './ProviderContainer';
 
-const render = (Component) => {
-  ReactDOM.render(
-    <AppContainer key={Math.random()}>
-      <Component />
-    </AppContainer>,
-    document.getElementById('react-container'),
-  );
-};
+const env = process.env.NODE_ENV;
+const container = document.getElementById('react-container');
 
-render(ProviderContainer);
+if (env === 'development') {
+  const render = (Component) => {
+    ReactDOM.render(
+      <AppContainer key={Math.random()}>
+        <Component />
+      </AppContainer>,
+      container,
+    );
+  };
 
-/* eslint-disable global-require  */
-// Webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./ProviderContainer', () => render(require('./ProviderContainer').default));
+  render(ProviderContainer);
+
+  /* eslint-disable global-require  */
+  // Webpack Hot Module Replacement API
+  if (module.hot) {
+    module.hot.accept('./ProviderContainer', () => render(require('./ProviderContainer').default));
+  }
+  /* eslint-enable */
+} else {
+  ReactDOM.render(<ProviderContainer />, container);
 }
-/* eslint-enable */

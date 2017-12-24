@@ -6,30 +6,7 @@ import {
   STORE_WORKLOAD_VALUES,
 } from '../actions';
 
-const defaultState = {
-  id: 1513971439931,
-  experimentID: 'Test',
-  participantID: 'BJPLKJOFM',
-  age: '23-25',
-  gender: 'Female',
-  experience: '2-4 years',
-  scale: {
-    'Mental Demand': 50,
-    'Physical Demand': 50,
-    'Temporal Demand': 50,
-    Performance: 50,
-    Effort: 50,
-    'Frustration Level': 100,
-  },
-  workload: {
-    'Mental Demand': 5,
-    'Physical Demand': 4,
-    'Temporal Demand': 3,
-    Performance: 2,
-    Effort: 1,
-    'Frustration Level': 0,
-  },
-};
+const defaultState = {};
 
 export default handleActions({
 
