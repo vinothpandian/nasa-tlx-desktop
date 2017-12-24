@@ -1,0 +1,62 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~rc-slider/assets/index.css";
+
+html,
+body,
+#root,
+[data-reactroot] {
+  height: 100%;
+  overflow-x: hidden;
+
+  > div {
+    height: 100%;
+    overflow-x: hidden;
+  }
+}
+
+#homeContainer {
+  height: calc(100% - 75px);
+}
+
+.rc-slider-handle {
+  background-color: $primary;
+  border: solid 2px $primary;
+  border-radius: 25%;
+}
+
+.rc-slider-dot {
+  background-color: $gray-400;
+  width: 4px;
+  height: 8px;
+  border: none;
+  border-radius: 0;
+}
+
+.alert.fade {
+  opacity: 1;
+  transition: opacity 0.15ms ease-in;
+}
+
+.nav-link {
+  color: $white;
+
+  &:hover {
+    color: $gray-400;
+    text-decoration: none;
+  }
+}
+
+.card,
+.infoblock {
+  box-shadow: 0 2px 7px $gray-400;
+}
+
+.infoblock {
+  .card {
+    box-shadow: none;
+  }
+}
+
+.resultTitle {
+  font-weight: 400;
+}
