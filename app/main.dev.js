@@ -16,7 +16,16 @@ import MenuBuilder from './menu';
 const fs = require('fs');
 const path = require('path');
 
-const dbPath = 'db.json';
+const appPath = app.getPath('appData');
+const dbPath = path.join(appPath, 'db.json');
+
+console.log(dbPath);
+
+if (!fs.existsSync(dbPath)) {
+  fs.closeSync(fs.openSync(dbPath, 'w'));
+}
+
+
 const low = require('lowdb');
 
 const FileSync = require('lowdb/adapters/FileSync');
