@@ -25,7 +25,7 @@ class Dashboard extends Component {
       experimentID = this.experiments[0];
       openTable = true;
     } else {
-      alert('No user data found');
+      alert('No user data found', 'Dashboard');
       this.experiments = [];
       this.props.history.push('/');
     }
@@ -60,15 +60,15 @@ class Dashboard extends Component {
     dialog.showSaveDialog({ filters: [{ name: 'JSON', extensions: ['json'] }] },
       (fileName) => {
         if (fileName === undefined) {
-          console.log("You didn't save the file");
+
           return;
         }
         const backupStatus = ipcRenderer.sendSync('backup', this.state.experimentID, fileName);
 
         if (backupStatus) {
-          alert(`Backup to ${fileName} successful`);
+          alert(`Backup to ${fileName} successful`, 'Backup status');
         } else {
-          alert('Sorry! Please saving it in a different drive');
+          alert('Sorry! Please saving it in a different drive', 'Backup status');
         }
       });
   }

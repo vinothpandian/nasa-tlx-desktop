@@ -68,9 +68,10 @@ class DashboardTable extends Component {
     ));
 
     tableData.push(
-      <tr key={shortid.generate()}>
+      <tr key={shortid.generate()} className="averageRow">
+        <th />
         <th scope="col">Average</th>
-        <th scope="col">{this.average}</th>
+        <th colSpan={6} scope="col">{average}</th>
       </tr>
     );
 
