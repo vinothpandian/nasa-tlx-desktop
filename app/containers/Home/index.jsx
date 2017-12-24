@@ -23,9 +23,9 @@ class Home extends Component {
       <div id="homeContainer">
         <Nav home />
         <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/definitions" component={Definitions} />
-          <Route exact path="/instructions" component={Instructions} />
+          <Route path="/instructions" component={Instructions} />
+          <Route path="/definitions" component={Definitions} />
+          <Route path="/" component={MainPage} />
         </Switch>
       </div>
     );
