@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import { ipcRenderer } from 'electron';
 import {
   Bar,
-  BarChart, CartesianGrid, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
   YAxis
 } from 'recharts';
 import { Col, Row, Table } from 'reactstrap';
@@ -20,7 +26,7 @@ class DashboardTable extends Component {
       experimentsData: [],
       chartData: [],
       average: 0,
-      tableData: [],
+      tableData: []
     };
 
     this.updateData = this.updateData.bind(this);
@@ -38,14 +44,16 @@ class DashboardTable extends Component {
     const experimentsData = ipcRenderer.sendSync('getExperiment', expID);
     const chartData = [];
 
-    const average = (experimentsData.reduce((acc, experiment) => {
-      const taskload = experiment.taskload || 0;
-      chartData.push({
-        name: experiment.participantID,
-        taskload,
-      });
-      return acc + taskload;
-    }, 0) / experimentsData.length).toFixed(2);
+    const average = (
+      experimentsData.reduce((acc, experiment) => {
+        const taskload = experiment.taskload || 0;
+        chartData.push({
+          name: experiment.participantID,
+          taskload
+        });
+        return acc + taskload;
+      }, 0) / experimentsData.length
+    ).toFixed(2);
 
     const tableData = experimentsData.map((row, index) => (
       <tr key={shortid.generate()}>
@@ -71,7 +79,9 @@ class DashboardTable extends Component {
       <tr key={shortid.generate()} className="averageRow">
         <th />
         <th scope="col">Average</th>
-        <th colSpan={6} scope="col">{average}</th>
+        <th colSpan={6} scope="col">
+          {average}
+        </th>
       </tr>
     );
 
@@ -79,7 +89,7 @@ class DashboardTable extends Component {
       experimentsData,
       chartData,
       average,
-      tableData,
+      tableData
     });
   }
 
@@ -103,18 +113,15 @@ class DashboardTable extends Component {
                 <th scope="col" />
               </tr>
             </thead>
-            <tbody>
-              {this.state.tableData}
-            </tbody>
+            <tbody>{this.state.tableData}</tbody>
           </Table>
           <hr />
         </Col>
 
         <h1 className="mt-3">Taskload chart of participants</h1>
         <Row className="justify-content-center align-items-center w-100 mt-5 h-100">
-
           <Col xs={12}>
-            <ResponsiveContainer width={'100%'} height={400}>
+            <ResponsiveContainer width={'100%'} height={450}>
               <BarChart data={this.state.chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis label={{ value: 'Participants', position: 'bottom' }} dataKey="name" />
@@ -141,7 +148,7 @@ class DashboardTable extends Component {
 }
 
 DashboardTable.propTypes = {
-  expID: PropTypes.string.isRequired,
+  expID: PropTypes.string.isRequired
 };
 
 export default DashboardTable;

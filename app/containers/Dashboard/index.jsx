@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import {
   Alert,
-  Button, ButtonDropdown, Col, DropdownItem, DropdownMenu, DropdownToggle,
+  Button,
+  ButtonDropdown,
+  Col,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Row
 } from 'reactstrap';
 import { ipcRenderer } from 'electron';
@@ -33,7 +38,7 @@ class Dashboard extends Component {
     this.state = {
       dropdownOpen: false,
       experimentID,
-      openTable,
+      openTable
     };
 
     this.toggle = this.toggle.bind(this);
@@ -43,7 +48,7 @@ class Dashboard extends Component {
 
   toggle() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
+      dropdownOpen: !this.state.dropdownOpen
     });
   }
 
@@ -52,25 +57,45 @@ class Dashboard extends Component {
 
     this.setState({
       experimentID: event.target.name,
-      openTable: true,
+      openTable: true
     });
   }
 
   backupData() {
-    dialog.showSaveDialog({ filters: [{ name: 'JSON', extensions: ['json'] }] },
-      (fileName) => {
-        if (fileName === undefined) {
+    dialog.showSaveDialog({ filters: [{ name: 'JSON', extensions: ['json'] }] }, fileName => {
+      if (fileName === undefined) {
+        return;
+      }
+      const backupStatus = ipcRenderer.sendSync('backup', this.state.experimentID, fileName);
 
-          return;
-        }
-        const backupStatus = ipcRenderer.sendSync('backup', this.state.experimentID, fileName);
+      if (backupStatus) {
+        alert(`Backup to ${fileName} successful`, 'Backup status');
+      } else {
+        alert('Sorry! Please saving it in a different drive', 'Backup status');
+      }
+    });
+  }
 
-        if (backupStatus) {
-          alert(`Backup to ${fileName} successful`, 'Backup status');
-        } else {
-          alert('Sorry! Please saving it in a different drive', 'Backup status');
-        }
-      });
+  backupAllData() {
+    dialog.showSaveDialog({ filters: [{ name: 'JSON', extensions: ['json'] }] }, fileName => {
+      if (fileName === undefined) {
+        return;
+      }
+      const backupStatus = ipcRenderer.sendSync('backupAll', fileName);
+
+      if (backupStatus) {
+        alert(`Backup to ${fileName} successful`, 'Backup status');
+      } else {
+        alert('Sorry! Please saving it in a different drive', 'Backup status');
+      }
+    });
+  }
+
+  componentDidCatch() {
+    alert(
+      'Incomplete or corrupted data found, please backup the data and check for inconsistencies'
+    );
+    this.props.history.push('/');
   }
 
   render() {
@@ -91,35 +116,30 @@ class Dashboard extends Component {
                     {this.state.experimentID}
                   </DropdownToggle>
                   <DropdownMenu>
-                    {
-                      this.experiments.map(value => (
-                        <DropdownItem
-                          key={shortid.generate()}
-                          name={value}
-                          onClick={this.dropDownClick}
-                        >
-                          {value}
-                        </DropdownItem>
-                      ))
-                    }
+                    {this.experiments.map(value => (
+                      <DropdownItem
+                        key={shortid.generate()}
+                        name={value}
+                        onClick={this.dropDownClick}
+                      >
+                        {value}
+                      </DropdownItem>
+                    ))}
                   </DropdownMenu>
                 </ButtonDropdown>
-                <Button
-                  color="success"
-                  className="ml-3"
-                  onClick={this.backupData}
-                >
-                  Backup Experiment Data
+                <Button color="success" className="ml-3" onClick={this.backupData}>
+                  Backup this experiment data
+                </Button>
+                <Button color="success" className="ml-3" onClick={this.backupAllData}>
+                  Backup all data
                 </Button>
               </Col>
               <Col xs={12} className="mt-5">
-                {
-                  this.state.openTable
-                    ?
-                      <DashboardTable expID={this.state.experimentID} />
-                    :
-                      <div />
-                }
+                {this.state.openTable ? (
+                  <DashboardTable expID={this.state.experimentID} />
+                ) : (
+                  <div />
+                )}
               </Col>
             </Row>
           </Col>
@@ -127,11 +147,10 @@ class Dashboard extends Component {
       </div>
     );
   }
-
 }
 
 Dashboard.propTypes = {
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired
 };
 
 export default Dashboard;

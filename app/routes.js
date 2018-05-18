@@ -7,10 +7,9 @@ import DetailsForm from './containers/DetailsForm';
 import SubScale from './containers/SubScale';
 import Pairwise from './containers/Pairwise';
 import PageNotFound from './containers/PageNotFound';
-import End from "./containers/End";
-import Dashboard from "./containers/Dashboard";
-import RawData from "./containers/Dashboard/RawData";
-
+import End from './containers/End';
+import Dashboard from './containers/Dashboard';
+import RawData from './containers/Dashboard/RawData';
 
 export default () => (
   <App>

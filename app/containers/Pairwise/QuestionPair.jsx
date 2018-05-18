@@ -28,10 +28,8 @@ class QuestionPair extends Component {
             {this.props.options[0].option}
           </Button>
         </Col>
-        <Col xs={12} className="align-self-center">
-          <p className="lead">
-            <span className="align-middle">or</span>
-          </p>
+        <Col xs={12} className="p-2">
+          <span className="lead">or</span>
         </Col>
         <Col xs={12}>
           <Button
@@ -50,7 +48,7 @@ class QuestionPair extends Component {
 
 QuestionPair.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 
 export default QuestionPair;

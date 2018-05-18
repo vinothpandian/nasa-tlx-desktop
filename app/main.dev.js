@@ -25,7 +25,6 @@ if (!fs.existsSync(dbPath)) {
   fs.closeSync(fs.openSync(dbPath, 'w'));
 }
 
-
 const low = require('lowdb');
 
 const FileSync = require('lowdb/adapters/FileSync');
@@ -52,16 +51,12 @@ if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true')
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer');
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-  const extensions = [
-    'REACT_DEVELOPER_TOOLS',
-    'REDUX_DEVTOOLS'
-  ];
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
 
-  return Promise
-    .all(extensions.map(name => installer.default(installer[name], forceDownload)))
-    .catch(console.log);
+  return Promise.all(
+    extensions.map(name => installer.default(installer[name], forceDownload))
+  ).catch(console.log);
 };
-
 
 /**
  * Add event listeners...
@@ -75,7 +70,6 @@ app.on('window-all-closed', () => {
   }
 });
 
-
 app.on('ready', async () => {
   if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
     await installExtensions();
@@ -86,7 +80,7 @@ app.on('ready', async () => {
     minWidth: 1024,
     minHeight: 728,
     width: 1024,
-    height: 728,
+    height: 728
   });
 
   mainWindow.setMenu(null);
@@ -114,7 +108,8 @@ app.on('ready', async () => {
 /* eslint-disable no-param-reassign */
 
 ipcMain.on('addParticipant', (event, payload) => {
-  const data = db.get('experiments')
+  const data = db
+    .get('experiments')
     .filter({
       experimentID: payload.expID,
       participantID: payload.partID
@@ -123,11 +118,12 @@ ipcMain.on('addParticipant', (event, payload) => {
     .value();
 
   if (data === undefined) {
-    db.get('experiments')
+    db
+      .get('experiments')
       .push({
         id: payload.id,
         experimentID: payload.expID,
-        participantID: payload.partID,
+        participantID: payload.partID
       })
       .write();
     event.returnValue = true;
@@ -137,7 +133,8 @@ ipcMain.on('addParticipant', (event, payload) => {
 });
 
 ipcMain.on('addData', (event, payload) => {
-  const data = db.get('experiments')
+  const data = db
+    .get('experiments')
     .filter({
       experimentID: payload.experimentID,
       participantID: payload.participantID
@@ -148,7 +145,8 @@ ipcMain.on('addData', (event, payload) => {
   if (data === undefined) {
     event.returnValue = false;
   } else {
-    db.get('experiments')
+    db
+      .get('experiments')
       .find({
         experimentID: payload.experimentID,
         participantID: payload.participantID
@@ -160,10 +158,14 @@ ipcMain.on('addData', (event, payload) => {
 });
 
 ipcMain.on('getData', (event, expID, partID) => {
-  const data = db.get('experiments').filter({
-    experimentID: expID,
-    participantID: partID
-  }).first().value();
+  const data = db
+    .get('experiments')
+    .filter({
+      experimentID: expID,
+      participantID: partID
+    })
+    .first()
+    .value();
 
   if (data === undefined) {
     event.returnValue = 'No data found';
@@ -172,8 +174,9 @@ ipcMain.on('getData', (event, expID, partID) => {
   }
 });
 
-ipcMain.on('getExperimentList', (event) => {
-  const data = db.get('experiments')
+ipcMain.on('getExperimentList', event => {
+  const data = db
+    .get('experiments')
     .orderBy('id', 'desc')
     .map('experimentID')
     .uniq()
@@ -187,7 +190,8 @@ ipcMain.on('getExperimentList', (event) => {
 });
 
 ipcMain.on('getExperiment', (event, expID) => {
-  const data = db.get('experiments')
+  const data = db
+    .get('experiments')
     .filter({ experimentID: expID })
     .value();
 
@@ -199,11 +203,10 @@ ipcMain.on('getExperiment', (event, expID) => {
 });
 
 ipcMain.on('backup', (event, expID, fileName) => {
-  const data = db.get('experiments')
+  const data = db
+    .get('experiments')
     .filter({ experimentID: expID })
     .value();
-
-  console.log(fileName);
 
   if (data.length === 0 || !data) {
     console.log('no data');
@@ -211,7 +214,26 @@ ipcMain.on('backup', (event, expID, fileName) => {
   } else {
     const content = JSON.stringify(data, null, 2);
 
-    fs.writeFile(fileName, content, (err) => {
+    fs.writeFile(fileName, content, err => {
+      if (err) {
+        event.returnValue = false;
+      }
+
+      event.returnValue = true;
+    });
+  }
+});
+
+ipcMain.on('backupAll', (event, fileName) => {
+  const data = db.get('experiments').value();
+
+  if (data.length === 0 || !data) {
+    console.log('no data');
+    event.returnValue = false;
+  } else {
+    const content = JSON.stringify(data, null, 2);
+
+    fs.writeFile(fileName, content, err => {
       if (err) {
         event.returnValue = false;
       }

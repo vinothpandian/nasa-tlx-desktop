@@ -7,20 +7,12 @@ function QuestionCard(props) {
   return (
     <Card>
       <CardHeader>
-        <h5>
-          Question {props.qNo + 1} of 15
-        </h5>
+        <h5>Question {props.qNo + 1} of 15</h5>
       </CardHeader>
       <div className="p-5">
-        <h5>
-          Of the two workload measures below, which one contributed the most to the task you
-          just completed?
-        </h5>
+        <h4>Out of the following two workload measures, which one contributed more to the task?</h4>
         <CardBody>
-          <QuestionPair
-            options={props.options}
-            handleClick={props.handleClick}
-          />
+          <QuestionPair options={props.options} handleClick={props.handleClick} />
         </CardBody>
       </div>
     </Card>
@@ -30,7 +22,7 @@ function QuestionCard(props) {
 QuestionCard.propTypes = {
   qNo: PropTypes.number.isRequired,
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 
 export default QuestionCard;

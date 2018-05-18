@@ -5,7 +5,9 @@ import { Card, CardBody, CardTitle, Col, Row } from 'reactstrap';
 import {
   Bar,
   BarChart,
-  CartesianGrid, Label, LabelList,
+  CartesianGrid,
+  Label,
+  LabelList,
   Legend,
   ResponsiveContainer,
   Tooltip,
@@ -17,9 +19,9 @@ import DetailsCard from './DetailsCard';
 import DataCard from './DataCard';
 
 const moment = require('moment');
+const _ = require('lodash');
 
 class RawData extends Component {
-
   constructor(props) {
     super(props);
 
@@ -28,18 +30,47 @@ class RawData extends Component {
 
     this.data = ipcRenderer.sendSync('getData', this.expID, this.partID);
 
+    const keys = Object.keys(this.data);
+    const idealKeys = [
+      'id',
+      'experimentID',
+      'participantID',
+      'age',
+      'experience',
+      'gender',
+      'scale',
+      'taskload',
+      'weightedWorkload',
+      'workload'
+    ];
+
+    let error = false;
+
     if (this.data === 'No data found') {
-      props.history.push('/');
+      alert('No data found');
+      error = true;
+      this.props.history.push('/');
+    } else if (!_.isEqual(keys, idealKeys)) {
+      alert(
+        'Incomplete or corrupted data found, please backup the data and check for inconsistencies'
+      );
+      error = true;
+      this.props.history.push('/dashboard');
     } else {
       this.chartData = Object.entries(this.data.weightedWorkload).map(([key, value]) => ({
         name: key,
         score: parseFloat((value / 15).toFixed(2))
       }));
     }
+
+    this.state = {
+      error
+    };
   }
 
-
   render() {
+    if (this.state.error) return <div>Error</div>;
+
     const data = this.data;
 
     return (
@@ -48,7 +79,9 @@ class RawData extends Component {
         <Row className="align-items-stretch p-5">
           <Col xs={12}>
             <h3 className="font-weight-normal">
-              {`Raw data of Participant "${data.participantID}" in Experiment "${data.experimentID}"`}
+              {`Raw data of Participant "${data.participantID}" in Experiment "${
+                data.experimentID
+              }"`}
             </h3>
             <h5 className="font-weight-light">
               Experiment performed at {moment(data.id).format('MMMM Do YYYY, h:mm:ss a')}
@@ -58,9 +91,7 @@ class RawData extends Component {
             <Card className="h-100 pt-3 px-4">
               <CardTitle>Weighted rating</CardTitle>
               <CardBody>
-                <h3 className="display-3">
-                  {data.taskload}
-                </h3>
+                <h3 className="display-3">{data.taskload}</h3>
               </CardBody>
             </Card>
           </Col>
@@ -82,7 +113,7 @@ class RawData extends Component {
                           domain={[0, 'dataMax + 10']}
                         />
                         <Tooltip />
-                        <Bar dataKey="score" fill="#82ca9d" >
+                        <Bar dataKey="score" fill="#82ca9d">
                           <LabelList dataKey="name" position="top" />
                         </Bar>
                         <Legend align="left" verticalAlign="bottom" />
@@ -95,12 +126,12 @@ class RawData extends Component {
                         data={[{ tag: 'Weighted Rating', 'Overall Workload': data.taskload }]}
                       >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="none" >
+                        <XAxis dataKey="none">
                           <Label value="Overall Workload" offset={-10} position="bottom" />
                         </XAxis>
                         <YAxis domain={[0, 100]} />
                         <Tooltip />
-                        <Bar dataKey="Overall Workload" fill="#8884d8" >
+                        <Bar dataKey="Overall Workload" fill="#8884d8">
                           <LabelList dataKey="tag" position="top" />
                         </Bar>
                       </BarChart>
@@ -116,10 +147,7 @@ class RawData extends Component {
             title="Sources of Workload tally (number of times selected)"
             values={data.workload}
           />
-          <DataCard
-            title="Adjusted Rating (Weight x Raw)"
-            values={data.weightedWorkload}
-          />
+          <DataCard title="Adjusted Rating (Weight x Raw)" values={data.weightedWorkload} />
         </Row>
       </div>
     );
@@ -128,7 +156,7 @@ class RawData extends Component {
 
 RawData.propTypes = {
   match: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired
 };
 
 export default RawData;
