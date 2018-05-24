@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, Input, InputGroup, InputGroupAddon, Label } from 'reactstrap';
+import { FormGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Label } from 'reactstrap';
 
 class RadioButton extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: '',
+      value: ''
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -16,14 +16,13 @@ class RadioButton extends Component {
     this.onTextChange = this.onTextChange.bind(this);
   }
 
-
   onTextChange(event) {
     event.preventDefault();
 
     this.props.onSelect(this.props.name, event.target.value);
 
     this.setState({
-      value: event.target.value,
+      value: event.target.value
     });
   }
 
@@ -46,18 +45,20 @@ class RadioButton extends Component {
       return (
         <FormGroup check inline>
           <InputGroup>
-            <InputGroupAddon>
-              <Input
-                addon
-                type="radio"
-                name={this.props.name}
-                value={this.state.value}
-                innerRef={(input) => {
-                  this.radioButton = input;
-                }}
-                onChange={this.focusTextInput}
-                onClick={this.focusTextInput}
-              />
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <Input
+                  addon
+                  type="radio"
+                  name={this.props.name}
+                  value={this.state.value}
+                  innerRef={input => {
+                    this.radioButton = input;
+                  }}
+                  onChange={this.focusTextInput}
+                  onClick={this.focusTextInput}
+                />
+              </InputGroupText>
             </InputGroupAddon>
             <Input
               type="text"
@@ -65,7 +66,7 @@ class RadioButton extends Component {
               value={this.state.value}
               onFocus={this.selectOtherButton}
               onChange={this.onTextChange}
-              innerRef={(input) => {
+              innerRef={input => {
                 this.textInput = input;
               }}
             />
@@ -94,8 +95,7 @@ class RadioButton extends Component {
 RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onSelect: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired
 };
-
 
 export default RadioButton;

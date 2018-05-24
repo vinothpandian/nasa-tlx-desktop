@@ -2,7 +2,7 @@
 
 ## Installation
 
-Download the executable from the links below:
+Download the executable from the links below
 
 * [Windows version][windows]
 * [Mac version][mac]

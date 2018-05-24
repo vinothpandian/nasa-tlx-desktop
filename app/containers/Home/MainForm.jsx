@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Alert, Button, Form, FormGroup, Input, InputGroup, InputGroupButton,
-  Label,
+  Alert,
+  Button,
+  Form,
+  FormGroup,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Label
 } from 'reactstrap';
 import { storeData } from '../../actions';
 import { ipcRenderer } from 'electron';
@@ -18,7 +24,7 @@ class MainForm extends Component {
     this.state = {
       expID: '',
       partID: '',
-      alertMessage: '',
+      alertMessage: ''
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -35,7 +41,7 @@ class MainForm extends Component {
       const payload = {
         id: Date.now(),
         expID: this.state.expID,
-        partID: this.state.partID,
+        partID: this.state.partID
       };
 
       isDataStored = ipcRenderer.sendSync('addParticipant', payload);
@@ -45,12 +51,12 @@ class MainForm extends Component {
         this.props.formSubmitted();
       } else {
         this.setState({
-          alertMessage: <Alert color="danger">Participant ID already exists!</Alert>,
+          alertMessage: <Alert color="danger">Participant ID already exists!</Alert>
         });
       }
     } else {
       this.setState({
-        alertMessage: <Alert color="warning">Please fill experiment and participant ID</Alert>,
+        alertMessage: <Alert color="warning">Please fill experiment and participant ID</Alert>
       });
     }
   }
@@ -61,7 +67,7 @@ class MainForm extends Component {
     const { name } = event.target;
 
     this.setState({
-      [name]: event.target.value,
+      [name]: event.target.value
     });
   }
 
@@ -69,7 +75,7 @@ class MainForm extends Component {
     event.preventDefault();
 
     this.setState({
-      partID: shortid.generate().toUpperCase(),
+      partID: shortid.generate().toUpperCase()
     });
   }
 
@@ -84,13 +90,17 @@ class MainForm extends Component {
           <Label>Participant ID</Label>
           <InputGroup>
             <Input name="partID" onChange={this.onInputChange} value={this.state.partID} />
-            <InputGroupButton>
-              <Button onClick={this.generateRandom} color="info">Random</Button>
-            </InputGroupButton>
+            <InputGroupAddon addonType="append">
+              <Button onClick={this.generateRandom} color="info">
+                Random
+              </Button>
+            </InputGroupAddon>
           </InputGroup>
         </FormGroup>
         <FormGroup>
-          <Button className="mt-4" color="success">Submit</Button>
+          <Button className="mt-4" color="success">
+            Submit
+          </Button>
         </FormGroup>
         {this.state.alertMessage}
       </Form>
@@ -100,11 +110,15 @@ class MainForm extends Component {
 
 MainForm.propTypes = {
   storeExpData: PropTypes.func.isRequired,
-  formSubmitted: PropTypes.func.isRequired,
+  formSubmitted: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  storeExpData: storeData.storeExpData,
-}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      storeExpData: storeData.storeExpData
+    },
+    dispatch
+  );
 
 export default connect(null, mapDispatchToProps)(MainForm);

@@ -14,27 +14,24 @@ class RadioButtonGroup extends Component {
   componentWillMount() {
     this.values = this.props.values.map(value => ({
       id: _.uniqueId(value),
-      value,
+      value
     }));
   }
-
 
   render() {
     return (
       <FormGroup>
-        <Label htmlFor={this.props.id}>{this.props.title}</Label>
+        <Label for={this.props.id}>{this.props.title}</Label>
         <div id={this.props.id}>
-          {
-            this.values.map((item, index) => (
-              <RadioButton
-                key={item.id}
-                name={this.props.id}
-                onSelect={this.props.onSelect}
-                id={this.props.id + index}
-                value={item.value}
-              />
-            ))
-          }
+          {this.values.map((item, index) => (
+            <RadioButton
+              key={item.id}
+              name={this.props.id}
+              onSelect={this.props.onSelect}
+              id={this.props.id + index}
+              value={item.value}
+            />
+          ))}
         </div>
       </FormGroup>
     );
@@ -45,7 +42,7 @@ RadioButtonGroup.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onSelect: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired
 };
 
 export default RadioButtonGroup;
