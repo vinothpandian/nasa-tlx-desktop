@@ -6,7 +6,7 @@ Download the executable from the links below
 
 * [Windows version][windows]
 * [Mac version][mac]
-* [Debian version][debian]
+* [Debian version - Ubuntu][debian]
 
 ---
 
@@ -58,7 +58,7 @@ To contribute to the project, read the electron-react-boilerplate guidelines fro
 Clone the project using the following command
 
 ```
-git clone --single-branch --depth=1 https://github.com/vinothpandian/nasa-tlx-desktop.git
+git clone --depth=1 https://github.com/vinothpandian/nasa-tlx-desktop.git
 ```
 
 ---
@@ -68,9 +68,9 @@ git clone --single-branch --depth=1 https://github.com/vinothpandian/nasa-tlx-de
 * [Nasa TLX][nasa-tlx]
 * [Electron React boilerplate][electron-react-boilerplate]
 
-[mac]: http://git.release
-[debian]: http://git.release
-[windows]: http://git.release
+[mac]: https://github.com/vinothpandian/nasa-tlx-desktop/raw/releases/NasaTLX-1.0.0.dmg
+[debian]: https://github.com/vinothpandian/nasa-tlx-desktop/raw/releases/nasa-tlx-desktop_1.0.0_amd64.deb
+[windows]: https://github.com/vinothpandian/nasa-tlx-desktop/raw/releases/NasaTLX%20Setup%201.0.0.exe
 [nasa-tlx]: https://humansystems.arc.nasa.gov/groups/tlx/
 [electron-react-boilerplate]: https://github.com/chentsulin/electron-react-boilerplate
 [contribution]: https://github.com/chentsulin/electron-react-boilerplate/blob/master/README.md
