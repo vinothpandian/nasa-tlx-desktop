@@ -70,7 +70,7 @@ git clone --depth=1 https://github.com/vinothpandian/nasa-tlx-desktop.git
 
 [mac]: https://github.com/vinothpandian/nasa-tlx-desktop/raw/releases/NasaTLX-1.0.0.dmg
 [debian]: https://github.com/vinothpandian/nasa-tlx-desktop/raw/releases/nasa-tlx-desktop_1.0.0_amd64.deb
-[windows]: https://github.com/vinothpandian/nasa-tlx-desktop/raw/releases/NasaTLX%20Setup%201.0.0.exe
+[windows]: https://github.com/vinothpandian/nasa-tlx-desktop/releases/download/1.0.0/NasaTLX.Setup.1.0.0.exe
 [nasa-tlx]: https://humansystems.arc.nasa.gov/groups/tlx/
 [electron-react-boilerplate]: https://github.com/chentsulin/electron-react-boilerplate
 [contribution]: https://github.com/chentsulin/electron-react-boilerplate/blob/master/README.md
