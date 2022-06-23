@@ -188,7 +188,7 @@
     "babili-webpack-plugin": "^0.1.2",
     "eslint-plugin-flowtype-errors": "^3.3.0",
     "html-webpack-plugin": "^2.29.0",
-    "jsdom": "^11.0.0",
+    "jsdom": "^16.5.0",
     "react-addons-test-utils": "^15.6.0"
   },
   "dependencies": {
