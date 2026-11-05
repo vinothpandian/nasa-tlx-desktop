@@ -69,7 +69,7 @@ export default merge.smart(baseConfig, {
               }
             },
             {
-              loader: 'sass-loader'
+              loader: 'sass-loader', options: { implementation: require('sass') }
             }
           ],
           fallback: 'style-loader',
@@ -89,7 +89,7 @@ export default merge.smart(baseConfig, {
             }
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader', options: { implementation: require('sass') }
           }]
         }),
       },

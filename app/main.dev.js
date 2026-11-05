@@ -10,7 +10,7 @@
  *
  * @flow
  */
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import MenuBuilder from './menu';
 
 const fs = require('fs');
@@ -81,6 +81,7 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
+    webPreferences: { nodeIntegration: true, contextIsolation: false },
     minWidth: 1024,
     minHeight: 728,
     width: 1024,
@@ -248,3 +249,13 @@ ipcMain.on('backupAll', (event, fileName) => {
 });
 
 /* eslint-enable */
+
+ipcMain.handle('choose-backup-path', async event => {
+  if (!mainWindow || event.sender !== mainWindow.webContents) {
+    throw new Error('Unknown backup requester');
+  }
+  const result = await dialog.showSaveDialog(mainWindow, {
+    filters: [{ name: 'JSON', extensions: ['json'] }]
+  });
+  return result.canceled ? undefined : result.filePath;
+});
