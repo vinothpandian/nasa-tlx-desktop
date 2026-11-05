@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 import Navigation from '../Nav';
 import DashboardTable from './DashboardTable';
 
-const { dialog } = require('electron').remote;
 const shortid = require('shortid');
 
 class Dashboard extends Component {
@@ -62,7 +61,7 @@ class Dashboard extends Component {
   }
 
   backupData() {
-    dialog.showSaveDialog({ filters: [{ name: 'JSON', extensions: ['json'] }] }, fileName => {
+    ipcRenderer.invoke('choose-backup-path').then(fileName => {
       if (fileName === undefined) {
         return;
       }
@@ -77,7 +76,7 @@ class Dashboard extends Component {
   }
 
   backupAllData() {
-    dialog.showSaveDialog({ filters: [{ name: 'JSON', extensions: ['json'] }] }, fileName => {
+    ipcRenderer.invoke('choose-backup-path').then(fileName => {
       if (fileName === undefined) {
         return;
       }

@@ -114,7 +114,7 @@ export default merge.smart(baseConfig, {
             },
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader', options: { implementation: require('sass') }
           }
         ]
       },
@@ -135,7 +135,7 @@ export default merge.smart(baseConfig, {
             }
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader', options: { implementation: require('sass') }
           }
         ]
       },

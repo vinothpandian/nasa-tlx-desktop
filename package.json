@@ -20,7 +20,7 @@
     "package-all": "npm run build && build -mwl",
     "package-linux": "npm run build && build --linux",
     "package-win": "npm run build && build --win --x64",
-    "postinstall": "node -r babel-register internals/scripts/CheckNativeDep.js && npm run flow-typed && npm run build-dll && electron-builder install-app-deps && node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
+    "postinstall": "node -r babel-register internals/scripts/CheckNativeDep.js && npm run flow-typed && npm run build-dll && electron-builder install-app-deps",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production electron ./app/",
     "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./app/main.dev",
@@ -139,7 +139,7 @@
     "cross-spawn": "^6.0.4",
     "css-loader": "^0.28.9",
     "detect-port": "^1.2.2",
-    "electron": "^1.7.11",
+    "electron": "^45.2.3",
     "electron-builder": "^19.55.3",
     "electron-devtools-installer": "^2.2.3",
     "electron-rebuild": "^1.7.3",
@@ -166,13 +166,12 @@
     "flow-typed": "^2.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
-    "minimist": "^1.2.0",
-    "node-sass": "^4.7.2",
+    "minimist": "^1.2.8",
     "npm-logical-tree": "^1.2.1",
     "react-test-renderer": "^16.2.0",
     "redux-logger": "^3.0.6",
     "rimraf": "^2.6.2",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^7.3.1",
     "sinon": "^4.2.2",
     "spectron": "^3.8.0",
     "style-loader": "^0.20.1",
@@ -188,19 +187,20 @@
     "babili-webpack-plugin": "^0.1.2",
     "eslint-plugin-flowtype-errors": "^3.3.0",
     "html-webpack-plugin": "^2.29.0",
-    "jsdom": "^11.0.0",
-    "react-addons-test-utils": "^15.6.0"
+    "jsdom": "^16.7.0",
+    "react-addons-test-utils": "^15.6.0",
+    "sass": "^1.107.1"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^4.6.2",
     "devtron": "^1.4.0",
     "electron-debug": "^1.5.0",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.18.1",
     "lowdb": "^1.0.0",
-    "moment": "^2.20.1",
+    "moment": "^2.30.1",
     "popper.js": "^1.12.9",
     "prop-types": "^15.6.0",
     "rc-slider": "^8.5.0",
@@ -221,9 +221,7 @@
     "shortid": "^2.2.8",
     "source-map-support": "^0.5.3"
   },
-  "devEngines": {
-    "node": ">=7.x",
-    "npm": ">=4.x",
-    "yarn": ">=0.21.3"
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
