@@ -182,7 +182,7 @@
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.2",
-    "webpack-dev-server": "^2.11.1",
+    "webpack-dev-server": "^6.1.0",
     "webpack-merge": "^4.1.1",
     "babili-webpack-plugin": "^0.1.2",
     "eslint-plugin-flowtype-errors": "^3.3.0",
